@@ -1,0 +1,40 @@
+### Hello World
+- debug:
+    msg: "Mesa Jar Jar Binks."
+    
+### Loops
+- debug:
+    msg: "{{ item }}"
+  with_items:
+    - I'll try spinning.
+    - That's a good trick.
+    - Whoa-ah!
+
+### Defining global! variables 
+- set_fact:
+    var_1: "I have the POWER! UNLIMITED... POWER!"
+
+- debug:
+    var: var_1
+
+### Copying files
+- name: "Copy a file"
+  copy:
+    src: files/file.txt
+    dest: "{{ role_path }}/../../dest_1.txt"
+
+### Using templates
+- name: "Use a template"
+  template:
+    src: templates/template_1.txt.j2
+    dest: "{{ role_path }}/../../dest_2.txt"
+  register: var_1
+  
+- debug:
+    var: var_1
+     
+
+### Using default values
+- debug:
+    msg: "{{ try | default( default_value ) }}"
+
